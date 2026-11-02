@@ -1,7 +1,8 @@
-# Generates a contribution graph with a snake eating the contributions.
-# The SVGs are published on the "output" branch so master stays clean.
+# Generates the profile README images: a contribution graph with a snake
+# eating the contributions, and a GitHub stats card (light and dark).
+# Everything is published on the "output" branch so master stays clean.
 
-name: Generate Snake
+name: Generate profile cards
 
 on:
   schedule:
@@ -19,6 +20,24 @@ jobs:
     timeout-minutes: 5
 
     steps:
+      - name: Generate the stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true
+          path: dist/github-stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
+      - name: Generate the dark stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=github_dark
+          path: dist/github-stats-dark.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
       - name: Generate the snake
         uses: Platane/snk@v3
         with:
