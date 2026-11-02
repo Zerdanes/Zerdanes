@@ -24,7 +24,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true
+          options: username=${{ github.repository_owner }}&show_icons=true&show=contributions
           path: dist/github-stats.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_error: true
@@ -33,7 +33,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true&count_private=true&theme=github_dark
+          options: username=${{ github.repository_owner }}&show_icons=true&show=contributions&theme=github_dark
           path: dist/github-stats-dark.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_error: true
